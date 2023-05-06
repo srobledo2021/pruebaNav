@@ -3,12 +3,10 @@
 
 #include <string>
 
-#include "rclcpp/rclcpp.hpp"
 #include "sound_play.hpp"
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
-
-#include "geometry_msgs/msg/pose_stamped.hpp"
+#include "gb_dialog/DialogInterface.hpp"
 
 namespace navigate_bt
 {
@@ -21,16 +19,7 @@ public:
     const BT::NodeConfiguration & conf);
 
 
-  void RequestNameCB(dialogflow_ros2_interfaces::msg::DialogflowResult result)
-  {
-    RCLCPP_INFO(this->get_logger(), "[RequestName] RequestNameCB: intent [%s]", result.intent.c_str());
-    speak(result.fulfillment_text);
-  }
-
-   void noIntentCB(dialogflow_ros2_interfaces::msg::DialogflowResult result)
-  {
-    RCLCPP_INFO(this->get_logger(), "[RequestName] noIntentCB: intent [%s]", result.intent.c_str());
-  }
+  void RequestNameCB(dialogflow_ros2_interfaces::msg::DialogflowResult result);
 
   void halt();
   BT::NodeStatus tick();
@@ -38,14 +27,15 @@ public:
   static BT::PortsList providedPorts()
   {
     return{
-      BT::OutputPort<std::string>("nameID");
+      BT::OutputPort<std::string>("nameID")
       };
   }
 
 private:
   rclcpp::Node::SharedPtr node_;
   gb_dialog::DialogInterface dialog_;
-  rclcpp::Time name ="";
+  rclcpp::Time  start_time_;
+  std::string name_ ="";
   bool listening_ = false;
 };
 

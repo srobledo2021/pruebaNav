@@ -1,0 +1,3 @@
+[35m[1mConsolidate compiler generated dependencies of target request_name[0m
+[ 50%] Built target navigate_main
+[ 75%] [32mBuilding CXX object CMakeFiles/request_name.dir/src/navigate_bt/RequestName.cpp.o[0m
