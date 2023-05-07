@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/sergiorobsar/new_workspace/src/pruebaNav/build/navigate_bt/librequest_name.so" "/home/sergiorobsar/new_workspace/src/pruebaNav/build/navigate_bt/navigate_main" "TARGETS" "request_name" "navigate_main" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "lib/navigate_bt")

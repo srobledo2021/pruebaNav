@@ -4,13 +4,19 @@
     <BehaviorTree ID="BehaviorTree">
         <KeepRunningUntilFailure>
             <ReactiveSequence>
-                <Action ID="RequestName"/>
+                <Action ID="RequestName" nameID="name_"/>
+                <Action ID="Introduction" nameID="name_"/>
             </ReactiveSequence>
         </KeepRunningUntilFailure>
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>
-        <Action ID="RequestName"/>
+        <Action ID="Introduction">
+            <input_port name="nameID"/>
+        </Action>
+        <Action ID="RequestName">
+            <output_port name="nameID"/>
+        </Action>
     </TreeNodesModel>
     <!-- ////////// -->
 </root>

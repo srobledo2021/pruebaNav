@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <stdio.h>
 
 #include "navigate_bt/RequestName.hpp"
 #include "gb_dialog/DialogInterface.hpp"
@@ -25,7 +26,7 @@ RequestName::RequestName(
 }
 
 
-void RequestNameCB(dialogflow_ros2_interfaces::msg::DialogflowResult result)
+void RequestName::RequestNameCB(dialogflow_ros2_interfaces::msg::DialogflowResult result)
   {
     name_ =result.parameters[0].value[0];
   }

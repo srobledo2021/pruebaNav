@@ -16,6 +16,7 @@ find_package(action_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(ament_index_cpp REQUIRED)
+find_package(std_msgs REQUIRED)
 
 find_package(ZMQ)
 if(ZMQ_FOUND)
@@ -37,14 +38,18 @@ set(dependencies
   geometry_msgs
   nav2_msgs
   ament_index_cpp
+  std_msgs
 )
 
 include_directories(include ${ZMQ_INCLUDE_DIRS})
 
 
 add_library(request_name SHARED src/navigate_bt/RequestName.cpp)
+add_library(introduction SHARED src/navigate_bt/Introduction.cpp)
 list(APPEND plugin_libs
   request_name
+  introduction
+
   
 )
 

@@ -1,5 +1,5 @@
-#ifndef NAVIGATE_BT__REQUESTNAME_HPP_
-#define NAVIGATE_BT__REQUESTNAME_HPP_
+#ifndef INTRODUCTION_BT__REQUESTNAME_HPP_
+#define INTRODUCTION_BT__REQUESTNAME_HPP_
 
 #include <string>
 
@@ -11,15 +11,13 @@
 namespace navigate_bt
 {
 
-class RequestName : public BT::ActionNodeBase
+class Introduction : public BT::ActionNodeBase
 {
 public:
-  explicit RequestName(
+  explicit Introduction(
     const std::string & xml_tag_name,
     const BT::NodeConfiguration & conf);
 
-
-  void RequestNameCB(dialogflow_ros2_interfaces::msg::DialogflowResult result);
 
   void halt();
   BT::NodeStatus tick();
@@ -27,7 +25,7 @@ public:
   static BT::PortsList providedPorts()
   {
     return{
-      BT::OutputPort<std::string>("nameID")
+      BT::InputPort<std::string>("nameID")
       };
   }
 
@@ -36,9 +34,8 @@ private:
   gb_dialog::DialogInterface dialog_;
   rclcpp::Time  start_time_;
   std::string name_ = "";
-  bool listening_ = false;
 };
 
 }  // namespace navigate_bt
 
-#endif  // NAVIGATE_BT__REQUESTNAME_HPP_
+#endif  // INTRODUCTION_BT__REQUESTNAME_HPP_
