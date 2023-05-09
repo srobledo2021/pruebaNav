@@ -40,5 +40,5 @@ Introduction::tick()
 
 BT_REGISTER_NODES(factory)
 {
-  factory.registerNodeType<navigate_bt::Introduction>("introduction");
+  factory.registerNodeType<navigate_bt::Introduction>("Introduction");
 }
