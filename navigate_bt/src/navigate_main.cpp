@@ -32,6 +32,8 @@ int main(int argc, char * argv[])
   BT::BehaviorTreeFactory factory;
   BT::SharedLibrary loader;
 
+  factory.registerFromPlugin(loader.getOSName("request_name"));
+  factory.registerFromPlugin(loader.getOSName("introduction"));
 
   std::string pkgpath = ament_index_cpp::get_package_share_directory("navigate_bt");
   std::string xml_file = pkgpath + "/behavior_tree_xml/navigate.xml";

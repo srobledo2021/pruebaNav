@@ -2,12 +2,13 @@
 <root main_tree_to_execute="BehaviorTree">
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
-        <KeepRunningUntilFailure>
+      <Action ID="RequestName" nameID="name_"/>
+        <!-- <KeepRunningUntilFailure>
             <ReactiveSequence>
                 <Action ID="RequestName" nameID="name_"/>
                 <Action ID="Introduction" nameID="name_"/>
             </ReactiveSequence>
-        </KeepRunningUntilFailure>
+        </KeepRunningUntilFailure> -->
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>

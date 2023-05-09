@@ -27,6 +27,7 @@ void
 Introduction::halt()
 {
 }
+
 BT::NodeStatus
 Introduction::tick()
 {

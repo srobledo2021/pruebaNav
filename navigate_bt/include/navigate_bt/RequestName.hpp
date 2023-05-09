@@ -21,7 +21,7 @@ public:
 
   void RequestNameCB(dialogflow_ros2_interfaces::msg::DialogflowResult result);
 
-  void halt();
+  void halt() {}
   BT::NodeStatus tick();
 
   static BT::PortsList providedPorts()
