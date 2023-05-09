@@ -23,10 +23,6 @@ Introduction::Introduction(
   config().blackboard->get("node",node_);
 }
 
-void
-Introduction::halt()
-{
-}
 
 BT::NodeStatus
 Introduction::tick()

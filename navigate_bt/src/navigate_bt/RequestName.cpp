@@ -28,7 +28,7 @@ RequestName::RequestName(
 
 void RequestName::RequestNameCB(dialogflow_ros2_interfaces::msg::DialogflowResult result)
   {
-    RCLCPP_INFO(node_->get_logger(), "[ExampleDF] requestNameCB: intent [%s]", result.intent.c_str());
+    RCLCPP_INFO(node_->get_logger(), "[ExampleDF] RequestNameCB: intent [%s]", result.intent.c_str());
     dialog_.speak(result.fulfillment_text);
     name_ = result.parameters[0].value[0];
   }
@@ -45,7 +45,6 @@ RequestName::tick()
     listening_ = true;
     dialog_.listen();
   }
-  dialog_.speak("Hello "+ name_ + "Nice to meet you. You are really welcomed!");
 
   if(name_ == "" && node_->now() - start_time_ > 10s){
     RCLCPP_INFO(node_->get_logger(),"Reboot the system"  );
@@ -61,6 +60,7 @@ RequestName::tick()
     return BT::NodeStatus::RUNNING;
   }
 
+  dialog_.speak("Hello "+ name_ + "Nice to meet you. You are really welcomed!");
 
   setOutput("nameID",name_);
 

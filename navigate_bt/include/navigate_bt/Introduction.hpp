@@ -19,7 +19,7 @@ public:
     const BT::NodeConfiguration & conf);
 
 
-  void halt();
+  void halt() {};
   BT::NodeStatus tick();
 
   static BT::PortsList providedPorts()

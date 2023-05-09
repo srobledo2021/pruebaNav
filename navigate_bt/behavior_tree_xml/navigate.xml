@@ -3,12 +3,12 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
       <Action ID="RequestName" nameID="name_"/>
-        <!-- <KeepRunningUntilFailure>
+        <KeepRunningUntilFailure>
             <ReactiveSequence>
                 <Action ID="RequestName" nameID="name_"/>
                 <Action ID="Introduction" nameID="name_"/>
             </ReactiveSequence>
-        </KeepRunningUntilFailure> -->
+        </KeepRunningUntilFailure>
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>
