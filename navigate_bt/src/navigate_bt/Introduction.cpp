@@ -27,6 +27,7 @@ Introduction::Introduction(
 BT::NodeStatus
 Introduction::tick()
 {
+  rclcpp::spin_some(dialog_.get_node_base_interface());
   getInput("nameID", name_);
   dialog_.speak("Nice to meet you "+ name_ + "Follow me. I will give you a seat");
 
@@ -40,5 +41,5 @@ Introduction::tick()
 
 BT_REGISTER_NODES(factory)
 {
-  factory.registerNodeType<navigate_bt::Introduction>("introduction");
+  factory.registerNodeType<navigate_bt::Introduction>("Introduction");
 }

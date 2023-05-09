@@ -23,6 +23,8 @@ RequestName::RequestName(
   dialog_.registerCallback(
     std::bind(&RequestName::RequestNameCB, this, _1),"RequestName");
   config().blackboard->get("node",node_);
+
+  config().blackboard->get("dialog",dialog_);
 }
 
 
@@ -40,21 +42,26 @@ RequestName::tick()
     start_time_ = node_->now();
     dialog_.speak("Howdy! What is your name?");
   }
+  
 
-  if(!listening_){
-    listening_ = true;
-    dialog_.listen();
-  }
+  // if(!listening_ ){
+  //   listening_ = true;
+  //   dialog_.listen();
+  // }
 
-  if(name_ == "" && node_->now() - start_time_ > 10s){
-    RCLCPP_INFO(node_->get_logger(),"Reboot the system"  );
+  if(!listening_ && name_ == "" && node_->now() - start_time_ > 10s){
     listening_ = false;
+    RCLCPP_INFO(node_->get_logger(),"Reboot the system" );
     return BT::NodeStatus::FAILURE;
   }
 
-  if(node_->now() - start_time_  < 3s){
+  if (!listening_ && name_ == "" && node_->now() - start_time_ > 3s) {
     return BT::NodeStatus::RUNNING;
   }
+  if (!listening_ && dialog_.listen()) {
+    listening_ = true;
+    return BT::NodeStatus::RUNNING;
+  } 
 
   if(name_== ""){
     return BT::NodeStatus::RUNNING;
