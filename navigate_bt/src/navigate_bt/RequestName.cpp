@@ -24,14 +24,14 @@ RequestName::RequestName(
     std::bind(&RequestName::RequestNameCB, this, _1),"RequestName");
   config().blackboard->get("node",node_);
 
-  config().blackboard->get("dialog",dialog_);
+  //config().blackboard->get("dialog",dialog_);
 }
 
 
 void RequestName::RequestNameCB(dialogflow_ros2_interfaces::msg::DialogflowResult result)
   {
-    RCLCPP_INFO(node_->get_logger(), "[ExampleDF] RequestNameCB: intent [%s]", result.intent.c_str());
-    dialog_.speak(result.fulfillment_text);
+    // RCLCPP_INFO(node_->get_logger(), "[ExampleDF] RequestNameCB: intent [%s]", result.intent.c_str());
+    // dialog_.speak(result.fulfillment_text);
     name_ = result.parameters[0].value[0];
   }
 BT::NodeStatus
@@ -74,7 +74,6 @@ RequestName::tick()
   name_="";
   listening_ = false;
 
-  rclcpp::spin_some(dialog_.get_node_base_interface());
   return BT::NodeStatus::SUCCESS;
 
 }  // namespace navigate_bt
